@@ -6,6 +6,8 @@ import { TopMenuComponent } from './componenets/top-menu/top-menu.component';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -13,7 +15,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
   ],
   imports: [
     BrowserModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
