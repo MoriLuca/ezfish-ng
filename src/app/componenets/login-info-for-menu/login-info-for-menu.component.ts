@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GlobalRuntimeConfigService } from '../../services/global-runtime-config.service';
+import { GlobalRuntimeConfigService, User } from '../../services/global-runtime-config.service';
 import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
@@ -20,12 +20,12 @@ export class LoginInfoForMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggle(){
-    this.rtmSvc.config.user.isLogged = !this.rtmSvc.config.user.isLogged; 
-  }
-
   ShowLoginRegisterForm(){
     this.rtmSvc.config.login.showLoginForm = true;
+  }
+
+  logout(){
+    this.rtmSvc.config.user = new User();
   }
 
 }

@@ -1,14 +1,15 @@
-<button (click)="toggle()" class="btn btn-dark">on/off</button>
 <div class="wrapper">
-  <div *ngIf="!rtmSvc.config.user.isLogged" class="login-request" >
+  <div *ngIf="!rtmSvc.config.user.isLogged && !rtmSvc.config.login.showLoginForm" class="login-request" >
       <button (click)="ShowLoginRegisterForm()" class="btn btn-dark">{{txt.login[rtmSvc.config.lang]}}/{{txt.register[rtmSvc.config.lang]}}</button>
     
   </div>
-  <div *ngIf="rtmSvc.config.user.isLogged" class="info">
+  <div  *ngIf="rtmSvc.config.user.isLogged" class="info">
     <p>
       {{rtmSvc.config.user.fullname}}
     </p>
+    <button class="btn btn-dark" (click)="logout()"></button>
   </div>
 
 </div>
+
 

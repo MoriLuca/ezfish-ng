@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { GlobalRuntimeConfigService } from '../../services/global-runtime-config.service';
+import { GlobalRuntimeConfigService, GlobalRuntimeConfig, User } from '../../services/global-runtime-config.service';
 import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
@@ -12,8 +12,7 @@ export class LoginComponent implements OnInit {
   showLoginRegisterForm: boolean = false;
   txt = new Testi();
   rtmSvc : GlobalRuntimeConfigService;
-  inputEmail : string;
-  inputPassword : string;
+  credenzialiLogin = new InputCredenzialiLogin();
 
   constructor(_globalRuntimeService :GlobalRuntimeConfigService) {
     this.rtmSvc = _globalRuntimeService;
@@ -30,6 +29,18 @@ export class LoginComponent implements OnInit {
     this.rtmSvc.config.login.showLoginForm = false;
   }
 
+  accedi(_credenziali: InputCredenzialiLogin){
+    if (_credenziali.email == "mori.luca@hotmail.it" && _credenziali.password == "0000"){
+      this.rtmSvc.config.user.name = "Luca";
+      this.rtmSvc.config.user.surname = "Mori";
+      this.rtmSvc.config.user.nickname = "White";
+      this.rtmSvc.config.user.isLogged = true;
+      this.rtmSvc.config.user.showPrivateName = true;
+
+      this.rtmSvc.config.login.showLoginForm = false;
+    }
+    
+  }
 }
 
 class Testi {
@@ -37,4 +48,9 @@ class Testi {
   passwordPlaceholder = ["Password","Password"];
   accedi = ["Accedi","Login"]
   registrati = ["Non ti sei ancora registrato?","Not yet registered?"]
+}
+
+class InputCredenzialiLogin{
+  email: string;
+  password: string;
 }
