@@ -1,17 +1,23 @@
-<div *ngIf="rtmSvc.config.login.showLoginForm" class="login-form-wrapper">
-  <fa class="exit-icon" name="times" size="2x" (click)="closeForm()"></fa>
-  <input [(ngModel)]="credenzialiLogin.email" type="text" name="email" id="email" placeholder="{{txt.namePlaceholder[rtmSvc.config.lang]}}">
-  <input [(ngModel)]="credenzialiLogin.password" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
-  <button (click)="accedi(credenzialiLogin)" class="btn btn-dark">{{txt.accedi[rtmSvc.config.lang]}}</button>
-  <button class="btn btn-dark">{{txt.registrati[rtmSvc.config.lang]}}</button>
+<div *ngIf="rtmSvc.config.login.showLoginForm && !showLoginRegisterForm" class="login-form-wrapper">
+  <div></div>
+  <fa class="exit-icon mr-3" name="times" size="2x" (click)="closeForm()"></fa>
+  <input class="m-1" [(ngModel)]="credenzialiLogin.email" type="text" name="email" id="email" placeholder="{{txt.namePlaceholder[rtmSvc.config.lang]}}">
+  <input class="m-1" [(ngModel)]="credenzialiLogin.password" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
+  <button (click)="accedi(credenzialiLogin)" class="btn btn-dark m-2">{{txt.accedi[rtmSvc.config.lang]}}</button>
+  <button (click)="apriFormRegistrazione()" class="btn btn-dark m-2">{{txt.registrati[rtmSvc.config.lang]}}</button>
 </div>
 
-<div *ngIf="rtmSvc.config.login.showRegisterForm" class="login-form-wrapper">
-    <fa class="exit-icon" name="times" size="2x" (click)="closeForm()"></fa>
-    <input [(ngModel)]="credenzialiLogin.email" type="text" name="email" id="email" placeholder="{{txt.namePlaceholder[rtmSvc.config.lang]}}">
-    <input [(ngModel)]="credenzialiLogin.password" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
-    <button (click)="accedi(credenzialiLogin)" class="btn btn-dark">{{txt.accedi[rtmSvc.config.lang]}}</button>
-    <button class="btn btn-dark">{{txt.registrati[rtmSvc.config.lang]}}</button>
-  </div>
+<div *ngIf="showLoginRegisterForm" class="login-form-wrapper">
+  <fa class="exit-icon" name="times" size="2x" (click)="closeForm()"></fa>
 
+  <input [(ngModel)]="nuovoUtente.name" type="text" name="name" id="name" placeholder="{{txt.regNamePh[rtmSvc.config.lang]}}">
+  <input [(ngModel)]="nuovoUtente.surname" type="text" name="surname" id="surname" placeholder="{{txt.regSurnamePh[rtmSvc.config.lang]}}">
+  <input [(ngModel)]="nuovoUtente.nickname" type="text" name="nick" id="nick" placeholder="{{txt.regNicknamePh[rtmSvc.config.lang]}}">
+  <input [(ngModel)]="nuovoUtente.email" type="text" name="email" id="email" placeholder="{{txt.regEmailPh[rtmSvc.config.lang]}}">
+  {{txt.regShowPrivateNamePh[rtmSvc.config.lang]}}<input [(ngModel)]="nuovoUtente.showPrivateName" type="checkbox" name="showPrivateName"
+    id="showPrivateName">
 
+  <button (click)="confermaRegistrazione()" class="btn btn-success">{{txt.btnRegistrati[rtmSvc.config.lang]}}</button>
+  <button (click)="chiudiFormRegistrazione()" class="btn btn-dark">{{txt.sonoRegistrato[rtmSvc.config.lang]}}</button>
+  <button (click)="resetCampi()" class="btn btn-warning">{{txt.btnClearRegistrazione[rtmSvc.config.lang]}}</button>
+</div>
