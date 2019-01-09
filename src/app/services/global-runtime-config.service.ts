@@ -51,4 +51,5 @@ export class User {
 
 export class LoginRegisterHandler{
   showLoginForm: boolean = false;
+  showRegisterForm: boolean = false;
 }

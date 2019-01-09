@@ -25,7 +25,8 @@ export class LoginInfoForMenuComponent implements OnInit {
   }
 
   logout(){
-    this.rtmSvc.config.user = new User();
+    if (confirm(this.txt.logoutConfirm[this.rtmSvc.config.lang]))
+      this.rtmSvc.config.user = new User();
   }
 
 }
@@ -33,6 +34,8 @@ export class LoginInfoForMenuComponent implements OnInit {
 class Testi {
   login = ["Accedi", "Login"];
   register = ["Registrati","Register"];
+  logout = ["Disconnetti","Logout"];
+  logoutConfirm = ["Sei sicuro di volerti scollegare?","Do you really want to logout?"];
 }
 
 
