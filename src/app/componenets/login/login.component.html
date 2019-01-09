@@ -1,0 +1,9 @@
+<div *ngIf="rtmSvc.config.login.showLoginForm" class="login-form-wrapper">
+  <fa class="exit-icon" name="times" size="2x" (click)="closeForm()"></fa>
+  <input [(ngModel)]="inputEmail" type="text" name="email" id="email" placeholder="{{txt.namePlaceholder[rtmSvc.config.lang]}}">
+  <input [(ngModel)]="inputPassword" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
+  <button (click)="accedi()" class="btn btn-dark">{{txt.accedi[rtmSvc.config.lang]}}</button>
+  <button class="btn btn-dark">{{txt.registrati[rtmSvc.config.lang]}}</button>
+  {{inputEmail}}
+</div>
+
