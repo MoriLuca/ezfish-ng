@@ -1,0 +1,48 @@
+.wrapper {
+    width: 100%;
+    height: 92.7vh;
+    overflow: hidden;
+    position: relative;
+}
+.home-background{
+    width: 100%;
+    min-height: 100%;
+}
+
+.cover {
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    background:rgba(0,0,0,0.75);
+    
+}
+
+.text-container{
+    position: relative;
+    margin: auto;
+    color: white;
+    width: 70%;
+    height: 50%;
+    transform: translate(0%, -50%);
+    top: 50%;
+    text-align: center;
+    /*  border: 2px solid white; */
+}
+
+.title{
+    font-size: 12vw;
+    font-family: 'Luckiest Guy', cursive;
+    height: 70%;
+}
+
+.description{
+    font-size: 3vw;
+    font-family: 'Handlee', cursive;
+    height: 30%;
+}
+
+hr{
+    color: white;
+    background: white;
+}
