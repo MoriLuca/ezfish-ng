@@ -38,24 +38,10 @@ export class ApiService {
       map(this.extractData));
   }
   
-  addNewPerson (user:User): number {
+  addNewPerson (user:User) {
     console.log(user);
     let body =  JSON.stringify(user);
-    this.http.post(this.endpoint + 'registration', body, this.httpOptions).subscribe(r=>{
-    
-      // if ( r == 1)
-      //   alert("Registrazione riuscita.");  
-      
-      // else if ( r == -2)
-      //   alert("Email esistente.\nEmail already exists.");
-      
-      // else
-      //   alert("Errore registrazione non riuscita.")
-      
-      return r;
-    });
-
-    return -1001;
+    return this.http.post<number>(this.endpoint + 'registration', body, this.httpOptions);
   }
   
   updateProduct (id, product): Observable<any> {

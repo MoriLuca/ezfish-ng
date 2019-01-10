@@ -67,37 +67,40 @@ export class LoginComponent implements OnInit {
   }
 
   confermaRegistrazione(){
+
+    let result; //errore non gestito
     confirm(this.txt.confirmRegistration[this.rtmSvc.config.lang]);
-    let res = this.api.addNewPerson(this.nuovoUtente);
-    
-    if ( res == 1)
-      alert("Registrazione riuscita.");  
-    
-    else if ( res == -2)
-      alert("Email esistente.\nEmail already exists.");
-    
-    else if ( res == -1001)
-      console.log("Richiesta rigestrazione non ancora gestita.");
+    this.api.addNewPerson(this.nuovoUtente).subscribe((success)=>{
+      result = success;
+      if ( result == 1)
+        alert(this.txt.signupSuccess[this.rtmSvc.config.lang]);  
       
-    else
-      alert("Errore registrazione non riuscita.")
+      else if ( result == -2)
+        alert(this.txt.messaggioEmailEsistente[this.rtmSvc.config.lang]);
+        
+      else
+        alert("Errore registrazione non riuscita.\nUnhandled Error");
+    },
+    (err)=>{},
+    ()=>{});
+    
       
 
   }
 }
 
 class Testi {
+  //input placeholders
   namePlaceholder = ["Indirizzo E-Mail", "E-Mail Address"];
   passwordPlaceholder = ["Password","Password"];
-  accedi = ["Accedi","Login"];
-  registrati = ["Non ti sei ancora registrato?","Not yet Signed Up?"];
-
+  
   //form di registrazione place holders
   regNamePh = ["Nome","Name"]
   regSurnamePh = ["Cognome","Surname"]
   regNicknamePh = ["Soprannome/Nickname","Nickname"]
   regShowPrivateNamePh = ["Vuoi permettere agli altri utenti di vedere il tuo nome e cognome?","Would you like other people to know your personal name and surname ?"]
   regEmailPh = ["Email per la registrazione","Registration Email"]
+  
   //form di registrazione pulsanti
   btnRegistrati = ["Conferma Registrazione","Confirm and Sign Up"];
   sonoRegistrato = ["Sei già registrato?","Already Signed Up?"];
@@ -106,11 +109,18 @@ class Testi {
   //conferma registrazione utente
   confirmRegistration = ["Sei sicuro di voler confermare la registrazione?","Continue with the registration?"];
 
-  //conferma pulizia campi registrazione
+  //messagi per utente
+  messaggioEmailEsistente = ["Impossibile completare la registrazione, l'email inserita è già stata utilizzata.","Can not Sign Up, the Email already exists."];
+  signupSuccess = ["La registrazione è avvenuta correttamente.","Sign Up request was succesfull."];
+  signupError = ["",""];
   confirmReset = ["Sicuro di voler cancellare i valori inseriti?","Do you really intend to clear the registration fields?"];
 
   //accesso non riuscito
   accessoNegato = ["Email o Password non valida.","Email or Password are incorrect."]
+
+  accedi = ["Accedi","Login"];
+  registrati = ["Non ti sei ancora registrato?","Not yet Signed Up?"];
+
 
 }
 
