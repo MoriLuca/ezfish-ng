@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GlobalRuntimeConfigService, GlobalRuntimeConfig, User } from '../../services/global-runtime-config.service';
-import { TouchSequence } from 'selenium-webdriver';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +11,19 @@ export class LoginComponent implements OnInit {
 
   showLoginRegisterForm: boolean = false;
   txt = new Testi();
-  rtmSvc : GlobalRuntimeConfigService;
+  
   credenzialiLogin = new InputCredenzialiLogin();
 
   //oggetto utilizzato come buffer per i dati in ingresso
   nuovoUtente = new User();
 
-  constructor(_globalRuntimeService :GlobalRuntimeConfigService) {
+  //services
+  rtmSvc : GlobalRuntimeConfigService;
+  api : ApiService
+
+  constructor(_globalRuntimeService :GlobalRuntimeConfigService, _api: ApiService) {
     this.rtmSvc = _globalRuntimeService;
+    this.api = _api;
   }
 
   ngOnInit() {
@@ -63,7 +68,21 @@ export class LoginComponent implements OnInit {
 
   confermaRegistrazione(){
     confirm(this.txt.confirmRegistration[this.rtmSvc.config.lang]);
-    alert("not implemented yet");
+    let res = this.api.addNewPerson(this.nuovoUtente);
+    
+    if ( res == 1)
+      alert("Registrazione riuscita.");  
+    
+    else if ( res == -2)
+      alert("Email esistente.\nEmail already exists.");
+    
+    else if ( res == -1001)
+      console.log("Richiesta rigestrazione non ancora gestita.");
+      
+    else
+      alert("Errore registrazione non riuscita.")
+      
+
   }
 }
 
