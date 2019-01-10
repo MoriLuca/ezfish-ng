@@ -33,7 +33,7 @@ export class LoginInfoForMenuComponent implements OnInit {
 
 class Testi {
   login = ["Accedi", "Login"];
-  register = ["Registrati","Register"];
+  register = ["Registrati","Sign Up"];
   logout = ["Disconnetti","Logout"];
   logoutConfirm = ["Sei sicuro di volerti scollegare?","Do you really want to logout?"];
 }

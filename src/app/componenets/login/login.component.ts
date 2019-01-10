@@ -99,7 +99,7 @@ class Testi {
   regSurnamePh = ["Cognome","Surname"]
   regNicknamePh = ["Soprannome/Nickname","Nickname"]
   regShowPrivateNamePh = ["Vuoi permettere agli altri utenti di vedere il tuo nome e cognome?","Would you like other people to know your personal name and surname ?"]
-  regEmailPh = ["Email per la registrazione","Registration Email"]
+  regEmailPh = ["Email per la registrazione","Sign Up Email"]
   
   //form di registrazione pulsanti
   btnRegistrati = ["Conferma Registrazione","Confirm and Sign Up"];
@@ -107,7 +107,7 @@ class Testi {
   btnClearRegistrazione = ["Ripulisci campi","Reset Fielsd"];
 
   //conferma registrazione utente
-  confirmRegistration = ["Sei sicuro di voler confermare la registrazione?","Continue with the registration?"];
+  confirmRegistration = ["Sei sicuro di voler confermare la registrazione?","Continue with the Sign Up?"];
 
   //messagi per utente
   messaggioEmailEsistente = ["Impossibile completare la registrazione, l'email inserita è già stata utilizzata.","Can not Sign Up, the Email already exists."];
