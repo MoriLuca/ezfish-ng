@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   showLoginRegisterForm: boolean = false;
   txt = new Testi();
   
-  credenzialiLogin = new InputCredenzialiLogin();
+  credenzialiLogin = new InputCredenzialiLogin("","");
 
   //oggetto utilizzato come buffer per i dati in ingresso
   nuovoUtente = new UserForDotnet();
@@ -48,6 +48,17 @@ export class LoginComponent implements OnInit {
     basicId = > -2 | Email trovata ma password sbagliata
   */
   accedi(_credenziali: InputCredenzialiLogin){
+
+    //controllo se email e password sono validi
+    if(!_credenziali.email.includes("@") || !_credenziali.email.includes(".")){
+      alert(this.txt.emailNonValida[this.rtmSvc.config.lang]);
+      return;
+    }
+    if(_credenziali.password.trim().length < 4){
+      alert(this.txt.passNonValida[this.rtmSvc.config.lang]);
+      return;
+    }
+
 
     this.api.login(_credenziali).subscribe((success)=>{
       
@@ -109,12 +120,39 @@ export class LoginComponent implements OnInit {
   return -4 | errore salvataggio info
   */
   confermaRegistrazione(){
+
+    //controllo campi vuoti per la registrazione
+    if(this.nuovoUtente.name.trim().length == 0){
+      alert(this.txt.nomeNonValido[this.rtmSvc.config.lang]);
+      return;
+    }
+    if(this.nuovoUtente.surname.trim().length == 0){
+      alert(this.txt.cognomeNonValido[this.rtmSvc.config.lang]);
+      return;
+    }
+    if(this.nuovoUtente.nickname.trim().length == 0){
+      alert(this.txt.nicknameNonValido[this.rtmSvc.config.lang]);
+      return;
+    }
+    if(!this.nuovoUtente.email.includes("@") || !this.nuovoUtente.email.includes(".")){
+      alert(this.txt.emailNonValida[this.rtmSvc.config.lang]);
+      return;
+    }
+    if(this.nuovoUtente.password.trim().length < 4){
+      alert(this.txt.passNonValida[this.rtmSvc.config.lang]);
+      return;
+    }
+
+
     confirm(this.txt.confirmRegistration[this.rtmSvc.config.lang]);
 
     this.api.addNewPerson(this.nuovoUtente).subscribe((success)=>{
 
-      if ( success == 1)
-        alert(this.txt.signupSuccess[this.rtmSvc.config.lang]);  
+      if ( success == 1){
+        alert(this.txt.signupSuccess[this.rtmSvc.config.lang]);
+        let credenziali = new InputCredenzialiLogin(this.nuovoUtente.email,this.nuovoUtente.password)
+        this.accedi(credenziali);
+      }
       else if ( success == -1)
         alert(this.txt.messaggioEmailEsistente[this.rtmSvc.config.lang]);  
       else if ( success == -2)
@@ -144,6 +182,14 @@ class Testi {
   regNicknamePh = ["Soprannome/Nickname","Nickname"]
   regShowPrivateNamePh = ["Vuoi permettere agli altri utenti di vedere il tuo nome e cognome?","Would you like other people to know your personal name and surname ?"]
   regEmailPh = ["Email per la registrazione","Sign Up Email"]
+
+  //messaggi errore del form di registrazione per campi non validi
+  nomeNonValido = ["Il campo nome non può essere vuoto.","Name field can not be empty."]
+  cognomeNonValido = ["Il Cognome nome non può essere vuoto.","Surname field can not be empty."]
+  nicknameNonValido = ["Il campo Nickname non può essere vuoto.","Nickname field can not be empty."]
+  passNonValida = ["La password deve essere lunga almeno 4 caratteri","Password must be at least 4 character."]
+  emailNonValida = ["L'email deve contenere i caratteri '@' , '.' ed essere lunga almeno 5 caratteri.","Your Email must contain '@' , '.' and be long at least 5 characters."]
+
   
   //form di registrazione pulsanti
   btnRegistrati = ["Conferma Registrazione","Confirm and Sign Up"];
@@ -177,8 +223,7 @@ class Testi {
 }
 
 export class InputCredenzialiLogin{
-  email: string;
-  password: string;
+  constructor(public email: string, public password: string){}
 }
 
 export class UserForDotnet {

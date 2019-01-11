@@ -2,7 +2,7 @@
   <div></div>
   <fa class="exit-icon mr-3" name="times" size="2x" (click)="closeForm()"></fa>
   <input class="m-1" [(ngModel)]="credenzialiLogin.email" type="text" name="email" id="email" placeholder="{{txt.namePlaceholder[rtmSvc.config.lang]}}">
-  <input class="m-1" [(ngModel)]="credenzialiLogin.password" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
+  <input class="m-1" [(ngModel)]="credenzialiLogin.password" (keyup.enter)="accedi(credenzialiLogin)" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
   <button (click)="accedi(credenzialiLogin)" class="btn btn-dark m-2">{{txt.accedi[rtmSvc.config.lang]}}</button>
   <button (click)="apriFormRegistrazione()" class="btn btn-dark m-2">{{txt.registrati[rtmSvc.config.lang]}}</button>
 </div>
