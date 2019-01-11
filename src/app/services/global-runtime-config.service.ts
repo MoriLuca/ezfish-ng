@@ -36,7 +36,7 @@ export class GlobalRuntimeConfig {
 
 export class User {
   isLogged : boolean = false;
-  id: number = -1;
+  peopleId: number = -1;
   name: string = "";
   surname: string = ""; 
   nickname: string = "";
@@ -44,6 +44,7 @@ export class User {
   photo: string = "";
   email: string = "";
   password: string = "";
+
 
   get fullname():string{
     return (this.showPrivateName)?this.name+" "+this.surname+ " | "+this.nickname : this.nickname;

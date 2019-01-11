@@ -5,7 +5,7 @@
   </div>
   <div  *ngIf="rtmSvc.config.user.isLogged" class="info">
     <p>
-      {{rtmSvc.config.user.fullname}}
+      {{(rtmSvc.config.user.showPrivateName)?rtmSvc.config.user.name+" "+rtmSvc.config.user.surname+ " | "+rtmSvc.config.user.nickname : rtmSvc.config.user.nickname}}
     </p>
     <button class="btn btn-dark" (click)="logout()">{{txt.logout[rtmSvc.config.lang]}}</button>
   </div>

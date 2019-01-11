@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { User } from './global-runtime-config.service';
+import { InputCredenzialiLogin } from '../componenets/login/login.component';
+
 
 @Injectable({
   providedIn: 'root'
@@ -38,11 +40,6 @@ export class ApiService {
       map(this.extractData));
   }
   
-  addNewPerson (user:User) {
-    console.log(user);
-    let body =  JSON.stringify(user);
-    return this.http.post<number>(this.endpoint + 'registration', body, this.httpOptions);
-  }
   
   updateProduct (id, product): Observable<any> {
     let body =  JSON.stringify(product);
@@ -79,7 +76,15 @@ export class ApiService {
 
 
    /********************************** test end ********************************** */
+   addNewPerson (user:User) {
+    let body =  JSON.stringify(user);
+    return this.http.post<number>(this.endpoint + 'registration', body, this.httpOptions);
+  }
 
+  login (credenziali:InputCredenzialiLogin) {
+    let body =  JSON.stringify(credenziali);
+    return this.http.post<User>(this.endpoint + 'login', body, this.httpOptions);
+  }
 
 
 

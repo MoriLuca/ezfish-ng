@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GlobalRuntimeConfigService, GlobalRuntimeConfig, User } from '../../services/global-runtime-config.service';
 import { ApiService } from 'src/app/services/api.service';
+import { core, ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -38,20 +39,51 @@ export class LoginComponent implements OnInit {
     this.showLoginRegisterForm = false;
   }
 
-  accedi(_credenziali: InputCredenzialiLogin){
-    if (_credenziali.email == "mori.luca@hotmail.it" && _credenziali.password == "0000"){
-      this.rtmSvc.config.user.name = "Luca";
-      this.rtmSvc.config.user.surname = "Mori";
-      this.rtmSvc.config.user.nickname = "White";
-      this.rtmSvc.config.user.isLogged = true;
-      this.rtmSvc.config.user.showPrivateName = true;
 
-      this.rtmSvc.config.login.showLoginForm = false;
-    }
-    else{
-      alert(this.txt.accessoNegato[this.rtmSvc.config.lang]);
-    }
+
+
+
+
+
+
+
+  accedi(_credenziali: InputCredenzialiLogin){
+
+    this.api.login(_credenziali).subscribe((success)=>{
+      
+      //let user  = new User();
+      let user : User = success;
+
+      if ( user.peopleId != -2 && user.peopleId != -3 ){
+        this.rtmSvc.config.user = user;
+        this.rtmSvc.config.user.isLogged = true;
+        //cancello la password solo per maggiore sicurezza
+        this.rtmSvc.config.user.password = "";
+        console.log(this.rtmSvc.config.user);
+        
+        this.closeForm();
+      }
+      //email trovata, password sbagliata
+      else if (user.peopleId == -2)
+        alert(this.txt.emailOkPassNo[this.rtmSvc.config.lang]);
+      //email non trovata
+      else if (user.peopleId == -3)  
+      alert(this.txt.emailNonTrovata[this.rtmSvc.config.lang]);
+    },
+    (err)=>{},
+    ()=>{});
   }
+
+
+
+
+
+
+
+
+
+
+
 
   apriFormRegistrazione(){
     this.showLoginRegisterForm = true;
@@ -121,10 +153,14 @@ class Testi {
   accedi = ["Accedi","Login"];
   registrati = ["Non ti sei ancora registrato?","Not yet Signed Up?"];
 
+  //login fallito
+  emailOkPassNo = ["La password inserita non corrisponde all'email selezionata.","Password incorrect.\nThe Password does not match the email inserted."];
+  emailNonTrovata = ["L'email inserita non è mai stata registrata.","The email inserted is not been registered yet."];
+
 
 }
 
-class InputCredenzialiLogin{
+export class InputCredenzialiLogin{
   email: string;
   password: string;
 }

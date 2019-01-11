@@ -14,9 +14,10 @@
   <input [(ngModel)]="nuovoUtente.surname" type="text" name="surname" id="surname" placeholder="{{txt.regSurnamePh[rtmSvc.config.lang]}}">
   <input [(ngModel)]="nuovoUtente.nickname" type="text" name="nick" id="nick" placeholder="{{txt.regNicknamePh[rtmSvc.config.lang]}}">
   <input [(ngModel)]="nuovoUtente.email" type="text" name="email" id="email" placeholder="{{txt.regEmailPh[rtmSvc.config.lang]}}">
+  <input [(ngModel)]="nuovoUtente.password" type="password" name="password" id="password" placeholder="{{txt.passwordPlaceholder[rtmSvc.config.lang]}}">
   {{txt.regShowPrivateNamePh[rtmSvc.config.lang]}}<input [(ngModel)]="nuovoUtente.showPrivateName" type="checkbox" name="showPrivateName"
     id="showPrivateName">
-
+  <br>
   <button (click)="confermaRegistrazione()" class="btn btn-success">{{txt.btnRegistrati[rtmSvc.config.lang]}}</button>
   <button (click)="chiudiFormRegistrazione()" class="btn btn-dark">{{txt.sonoRegistrato[rtmSvc.config.lang]}}</button>
   <button (click)="resetCampi()" class="btn btn-warning">{{txt.btnClearRegistrazione[rtmSvc.config.lang]}}</button>
