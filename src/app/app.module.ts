@@ -13,6 +13,7 @@ import { LoginComponent } from './componenets/login/login.component';
 import { LoginInfoForMenuComponent } from './componenets/login-info-for-menu/login-info-for-menu.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { GetInfoByEmailComponent } from './componenets/get-info-by-email/get-info-by-email.component';
 
 
 
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     LoginInfoForMenuComponent,
+    GetInfoByEmailComponent,
     
     
   ],
