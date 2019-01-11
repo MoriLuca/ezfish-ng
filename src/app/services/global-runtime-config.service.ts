@@ -35,6 +35,7 @@ export class GlobalRuntimeConfig {
 }
 
 export class User {
+  basicId: number = -1;
   isLogged : boolean = false;
   peopleId: number = -1;
   name: string = "";

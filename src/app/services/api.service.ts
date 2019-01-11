@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { User } from './global-runtime-config.service';
-import { InputCredenzialiLogin } from '../componenets/login/login.component';
+import { InputCredenzialiLogin, UserForDotnet } from '../componenets/login/login.component';
 
 
 @Injectable({
@@ -76,7 +76,7 @@ export class ApiService {
 
 
    /********************************** test end ********************************** */
-   addNewPerson (user:User) {
+   addNewPerson (user:UserForDotnet) {
     let body =  JSON.stringify(user);
     return this.http.post<number>(this.endpoint + 'registration', body, this.httpOptions);
   }
