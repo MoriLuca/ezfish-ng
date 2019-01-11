@@ -1,3 +1,8 @@
-<p>
-  get-info-by-email works!
-</p>
+
+<div>
+  La tua Email : <input type="text" [(ngModel)]="emailMessage.fromEmail" ><br>
+  Numero di telefono (Opzionale, solamente se si desidera essere ricontattati con urgenza) : <input type="text" [(ngModel)]="emailMessage.fromTelephone" ><br>
+  Oggetto : <input type="text" [(ngModel)]="emailMessage.subject" ><br>
+  Contenuto : <input type="text" [(ngModel)]="emailMessage.body" ><br>
+  <button class="btn btn-success" (click)="inviaEmail()">Invia</button>
+</div>

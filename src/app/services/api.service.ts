@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError, tap } from 'rxjs/operators';
 import { User } from './global-runtime-config.service';
 import { InputCredenzialiLogin, UserForDotnet } from '../componenets/login/login.component';
+import { EMailMessage } from '../componenets/get-info-by-email/get-info-by-email.component';
 
 
 @Injectable({
@@ -88,10 +89,12 @@ export class ApiService {
 
 
 
-  /*********************************** users ************************************ */
+  /*********************************** email ************************************ */
 
-  registerNewPerson(): number{
-    return 1;
+  //Invio un email da parte di un utente dalla pagina contatti   
+  SendEmailForInfo(mex: EMailMessage){
+    let body =  JSON.stringify(mex);
+    return this.http.post<number>(this.endpoint + 'email', body, this.httpOptions);
   }
 
 
@@ -99,5 +102,5 @@ export class ApiService {
 
 
 
-   /********************************** users end ********************************** */
+   /********************************** email end ********************************** */
 }
