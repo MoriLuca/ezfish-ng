@@ -12,8 +12,11 @@ import { EMailMessage } from '../componenets/get-info-by-email/get-info-by-email
 })
 export class ApiService {
 
-  endpoint = 'http://2ezfish.com/api/';
-  // endpoint = 'http://192.168.1.101:8080/api/';
+  urlGidi = "http://192.168.33.200:8080/";
+  urlHome = "http://192.168.1.101:8080/";
+  urlToEz = "http://192.168.33.200/";
+  
+  endpoint = this.urlGidi + 'api/';
   httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
@@ -93,8 +96,8 @@ export class ApiService {
 
   //Invio un email da parte di un utente dalla pagina contatti   
   SendEmailForInfo(mex: EMailMessage){
-    let body =  JSON.stringify(mex);
-    return this.http.post<number>(this.endpoint + 'email', body, this.httpOptions);
+    let emailInfoForCore =  JSON.stringify(mex);
+    return this.http.post<number>(this.endpoint + 'email', emailInfoForCore, this.httpOptions);
   }
 
 

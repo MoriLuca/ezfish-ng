@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class GetInfoByEmailComponent implements OnInit {
 
-  emailMessage: EMailMessage = new EMailMessage("","","","","");
+  emailMessage: EMailMessage = new EMailMessage("","","","","","","");
   txt = new Testi();
 
   //services
@@ -43,6 +43,8 @@ export class GetInfoByEmailComponent implements OnInit {
 }
   export class EMailMessage {
   constructor(
+    public fromName: string,
+    public fromSurname: string,
     public fromEmail: string,
     public to: string,
     public fromTelephone: string,
