@@ -14,6 +14,7 @@ import { LoginInfoForMenuComponent } from './componenets/login-info-for-menu/log
 
 import { HttpClientModule } from '@angular/common/http';
 import { GetInfoByEmailComponent } from './componenets/get-info-by-email/get-info-by-email.component';
+import { TestCsvComponent } from './componenets/test-csv/test-csv.component';
 
 
 
@@ -28,6 +29,7 @@ import { GetInfoByEmailComponent } from './componenets/get-info-by-email/get-inf
     LoginComponent,
     LoginInfoForMenuComponent,
     GetInfoByEmailComponent,
+    TestCsvComponent,
     
     
   ],
