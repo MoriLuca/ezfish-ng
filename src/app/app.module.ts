@@ -16,12 +16,11 @@ import { LoginInfoForMenuComponent } from './componenets/login-info-for-menu/log
 import { HttpClientModule } from '@angular/common/http';
 import { GetInfoByEmailComponent } from './componenets/get-info-by-email/get-info-by-email.component';
 import { TestCsvComponent } from './componenets/test-csv/test-csv.component';
-<<<<<<< HEAD
-=======
+
 import { NotFoundComponentComponent } from './componenets/not-found-component/not-found-component.component';
 import { LaghiComponent } from './componenets/laghi/laghi.component';
 import { TecnicheComponent } from './componenets/tecniche/tecniche.component';
->>>>>>> AddingRouting
+
 
 
 
@@ -37,14 +36,10 @@ import { TecnicheComponent } from './componenets/tecniche/tecniche.component';
     LoginInfoForMenuComponent,
     GetInfoByEmailComponent,
     TestCsvComponent,
-<<<<<<< HEAD
-    
-    
-=======
+
     NotFoundComponentComponent,
     LaghiComponent,
     TecnicheComponent,
->>>>>>> AddingRouting
   ],
   imports: [
     BrowserModule,
