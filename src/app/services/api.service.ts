@@ -13,7 +13,7 @@ import { EMailMessage } from '../componenets/get-info-by-email/get-info-by-email
 export class ApiService {
 
   urlGidi = "http://192.168.33.200:8080/";
-  urlHome = "http://192.168.1.101:8080/";
+  urlHome = "http://192.168.1.200:8080/";
   urlToEz = "http://192.168.33.200/";
   
   endpoint = this.urlGidi + 'api/';
