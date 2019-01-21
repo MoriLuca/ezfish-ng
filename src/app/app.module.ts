@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TopMenuComponent } from './componenets/top-menu/top-menu.component';
@@ -15,6 +16,12 @@ import { LoginInfoForMenuComponent } from './componenets/login-info-for-menu/log
 import { HttpClientModule } from '@angular/common/http';
 import { GetInfoByEmailComponent } from './componenets/get-info-by-email/get-info-by-email.component';
 import { TestCsvComponent } from './componenets/test-csv/test-csv.component';
+<<<<<<< HEAD
+=======
+import { NotFoundComponentComponent } from './componenets/not-found-component/not-found-component.component';
+import { LaghiComponent } from './componenets/laghi/laghi.component';
+import { TecnicheComponent } from './componenets/tecniche/tecniche.component';
+>>>>>>> AddingRouting
 
 
 
@@ -30,16 +37,27 @@ import { TestCsvComponent } from './componenets/test-csv/test-csv.component';
     LoginInfoForMenuComponent,
     GetInfoByEmailComponent,
     TestCsvComponent,
+<<<<<<< HEAD
     
     
+=======
+    NotFoundComponentComponent,
+    LaghiComponent,
+    TecnicheComponent,
+>>>>>>> AddingRouting
   ],
   imports: [
     BrowserModule,
     AngularFontAwesomeModule,
     FormsModule,
-    HttpClientModule
-    
-    
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path:"",component: HomeComponent},
+      {path:"laghi",component: LaghiComponent},
+      {path:"tecniche",component: TecnicheComponent},
+      {path:"contattaci",component: GetInfoByEmailComponent},
+      {path:"**",component: NotFoundComponentComponent}
+    ])
   ],
   providers: [
     GlobalRuntimeConfigService,
