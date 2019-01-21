@@ -31,6 +31,7 @@ class Testi {
   laghi = ["Laghi","Lakes"];
   tecniche = ["Tecniche","Techniques"];
   squadre = ["Squadre","Teams"];
-  specieIttiche = ["Specie Ittiche","Fish Species"]
+  specieIttiche = ["Specie Ittiche","Fish Species"];
+  contattaci = ["Contattaci","Contact Us"];
 
 }
