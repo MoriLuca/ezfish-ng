@@ -16,7 +16,7 @@ export class ApiService {
   urlHome = "http://192.168.1.200:8080/";
   urlToEz = "http://192.168.33.200/";
   
-  endpoint = this.urlGidi + 'api/';
+  endpoint = this.urlHome + 'api/';
   httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'
