@@ -5,6 +5,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 import { User } from './global-runtime-config.service';
 import { InputCredenzialiLogin, UserForDotnet } from '../componenets/login/login.component';
 import { EMailMessage } from '../componenets/get-info-by-email/get-info-by-email.component';
+import { LakePreview } from '../componenets/laghi/laghi.component';
 
 
 @Injectable({
@@ -102,8 +103,11 @@ export class ApiService {
 
 
 
-
-
+  getLakesPreviews(){
+    return this.http.get<LakePreview[]>(this.endpoint + 'getlakesinfo', this.httpOptions);
+  }
 
    /********************************** email end ********************************** */
 }
+
+

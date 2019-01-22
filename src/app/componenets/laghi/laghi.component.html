@@ -1,3 +1,38 @@
-<p>
-  laghi works!
-</p>
+<!-- Elenco laghi  -->
+
+<div class="wrpapper">
+
+    <div class="elenco-container">
+
+        <!-- inizio presentazione lago -->
+        <div class="box transition3" [routerLink]="['/lago',l.id]" *ngFor="let l of laghi">
+            <!-- <div class="cover transition3"></div> -->
+            <h5 class="box-nome-lago">{{l.nome}}</h5>
+            <div class="box-body">
+                <p class="box-info">
+                    <div class="wrapper-info">
+                        <p>
+                        Giorni di Apertura :  
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[0])"> Lun</span>,
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[1])"> Mar</span>,
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[2])"> Mer</span>,
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[3])"> Gio</span>,
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[4])"> Ven</span>,
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[5])"> Sab</span>,
+                                    <span class="day" [ngClass]="getOpeningInfo(l.giornoDiApertura[6])"> Dom </span>
+                        </p>
+                        <p><fa name="globe"></fa> {{l.indirizzo}}</p>
+                        <p><fa name="phone"></fa> {{l.telefono}}</p>
+                        <p><fa name="envelope-o"></fa> {{l.email}}</p>
+                    
+                        <p class="box-text">{{l.info[rtmSvc.config.lang]}}</p>
+                    </div>
+                    <div class="box-preview"><img [src]="l.prewievImg" alt="planimetria laghetto {{l.nome}}"></div>
+            </div>
+        </div>
+        <!-- fine presentazione lago -->
+
+
+    </div>
+
+</div>

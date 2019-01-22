@@ -20,6 +20,7 @@ import { TestCsvComponent } from './componenets/test-csv/test-csv.component';
 import { NotFoundComponentComponent } from './componenets/not-found-component/not-found-component.component';
 import { LaghiComponent } from './componenets/laghi/laghi.component';
 import { TecnicheComponent } from './componenets/tecniche/tecniche.component';
+import { LagoComponent } from './componenets/lago/lago.component';
 
 
 
@@ -40,6 +41,7 @@ import { TecnicheComponent } from './componenets/tecniche/tecniche.component';
     NotFoundComponentComponent,
     LaghiComponent,
     TecnicheComponent,
+    LagoComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,8 @@ import { TecnicheComponent } from './componenets/tecniche/tecniche.component';
     RouterModule.forRoot([
       {path:"",component: HomeComponent},
       {path:"laghi",component: LaghiComponent},
+      {path:"laghi",component: LaghiComponent},
+      {path:"lago/:id",component: LagoComponent},
       {path:"tecniche",component: TecnicheComponent},
       {path:"contattaci",component: GetInfoByEmailComponent},
       {path:"**",component: NotFoundComponentComponent}
